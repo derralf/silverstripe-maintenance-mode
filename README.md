@@ -1,4 +1,30 @@
 # SilverStripe Maintenance Mode Module
+
+
+### Install this fork
+
+add this to your composer.json ans run composer install
+
+```
+    ...
+    "require": {
+        ...
+        "derralf/silverstripe-maintenance-mode": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:derralf/silverstripe-maintenance-mode.git"
+        }
+    ],
+    ...
+
+```
+
+
+## ((original from here on))
+
+
 Maintainance/Offline Mode Module for SilverStripe.  Allows an
 administrator to put site in offline mode with 503 status to display a
 'Coming Soon', 'Under Construction' or 'Down for Maintenance' Page to
