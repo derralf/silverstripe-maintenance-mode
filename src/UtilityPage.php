@@ -154,13 +154,30 @@ class UtilityPage extends ErrorPage
 	{
 
 		$ss_templates_array = array();
-		$current_theme_path = THEMES_PATH.'/'.Config::inst()->get('SSViewer', 'theme');
 
-		//theme directories to search
-		$search_dir_array = array(
-			MAINTENANCE_MODE_PATH.'/templates',
-			$current_theme_path.'/templates'
-		);
+        //theme directories to search
+        $search_dir_array = array();
+
+        // add THIS modules templates dir
+        $module_template_dir = dirname(dirname(__FILE__))  . '/templates';
+        $search_dir_array[] = $module_template_dir;
+
+        // add current themes (absolute path on server)
+        // cf. ViewableData::ThemeDir() and last part of ThemeResourceLoader::findTemplate()
+        $themes = \SilverStripe\View\SSViewer::config()->uninherited('themes');
+        foreach ($themes as $theme) {
+            // Skip theme sets
+            if (strpos($theme, '$') === 0) {
+                continue;
+            } else {
+                // get absolute path
+                $theme_path = \SilverStripe\View\ThemeResourceLoader::inst()->getPath($theme);
+                $path_parts = [ BASE_PATH, $theme_path, 'templates'];
+                $abs_theme_path = \SilverStripe\Core\Path::join($path_parts);
+                // add path to array
+                $search_dir_array[] = $abs_theme_path;
+            }
+        }
 
 		foreach ($search_dir_array as $directory) {
 
