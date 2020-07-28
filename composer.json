@@ -26,10 +26,7 @@
         }
     },
     "extra": {
-        "installer-name": "maintenance-mode",
-        "expose": [
-            "client"
-        ]
+        "installer-name": "maintenance-mode"
     },
     "minimum-stability": "dev"
 }
