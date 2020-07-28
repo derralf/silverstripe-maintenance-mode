@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "derralf\\MaintenanceMode\\": "src/"
+            "dljoseph\\MaintenanceMode\\": "src/"
         }
     },
     "extra": {
